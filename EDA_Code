@@ -1,0 +1,167 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+df=pd.read_csv("Earth_quakes 1990-2023.csv")
+df['date'] = pd.to_datetime(df['date'],errors='coerce')
+df['year'] = df['date'].dt.year
+earthquake_per_year = df['year'].value_counts().sort_index()
+
+plt.figure(figsize=(12, 6))
+earthquake_per_year.plot(kind='line')
+plt.title('Number of Earthquakes Per Year (1990-2023)')
+plt.xlabel('Year')
+plt.ylabel('Number of Earthquakes')
+plt.grid(True)
+plt.show()
+
+plt.scatter(df['magnitudo'],df['depth'])
+plt.title('magnituo vs depth')
+plt.xlabel('magnitudo')
+plt.ylabel('depth')
+plt.grid(True)
+plt.show()
+
+plt.scatter(df['longitude'],df['latitude'])
+plt.title('longitude vs latitude')
+plt.xlabel('longitude')
+plt.ylabel('latitude')
+plt.grid(True)
+plt.show()
+
+california_df = df[df['state'].str.contains("California", case=False, na=False)]
+correlation_matrix = california_df[['magnitudo', 'depth', 'significance', 'tsunami']].corr()
+correlation_matrix
+
+california_df = df[df['state'].str.contains("California", case=False, na=False)]
+
+# Calculate the correlation between magnitude and depth
+magnitude_depth_corr = california_df['magnitudo'].corr(california_df['depth'])
+
+# Create a scatter plot with a regression line
+plt.figure(figsize=(10, 6))
+plt.scatter(x='depth', y='magnitudo', data=california_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in California\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='significance', y='tsunami', data=california_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in California')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+indonesia_df = df[df['state'].str.contains("Indonesia", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=indonesia_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in Indonesia')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=indonesia_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in indonesia\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+state_year_counts = df.groupby(['state', 'year']).size().unstack(fill_value=0)
+state_year_counts.plot(kind='bar', stacked=True, figsize=(15, 8))
+plt.title('Number of Earthquakes per State Over Time')
+plt.xlabel('Year')
+plt.ylabel('Number of Earthquakes')
+plt.legend(title='State', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.grid(True)
+plt.show()
+
+washington_df = df[df['state'].str.contains("washington", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=washington_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in washington')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=washington_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in washington\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+italy_df = df[df['state'].str.contains("italy", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=italy_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in italy')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=italy_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in italy\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+spain_df = df[df['state'].str.contains("spain", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=spain_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in italy')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=spain_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in italy\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+hawaii_df = df[df['state'].str.contains("hawaii", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=hawaii_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in hawaii')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=hawaii_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in hawaii\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
+
+greece_df = df[df['state'].str.contains("greece", case=False, na=False)]
+plt.figure(figsize=(10, 6))
+plt.scatter(x='significance', y='tsunami', data=greece_df, alpha=0.6)
+plt.title('Scatter Plot of Significance vs. Tsunami in greece')
+plt.xlabel('Significance')
+plt.ylabel('Tsunami (0 = No, 1 = Yes)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.scatter(x='magnitudo',y='depth',data=greece_df)
+plt.title(f'Scatter Plot of Magnitude vs. Depth in greece\nCorrelation: {magnitude_depth_corr:.2f}')
+plt.xlabel('Depth (km)')
+plt.ylabel('Magnitudo')
+plt.grid(True)
+plt.show()
+
