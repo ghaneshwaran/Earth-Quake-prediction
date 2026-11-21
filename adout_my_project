@@ -1,0 +1,27 @@
+Earthquake Analysis and Prediction
+Project Overview
+
+Developed a Machine Learning-based project to analyze historical earthquake data from 1990 to 2023, identify earthquake-related patterns, and classify earthquake risk levels using data analysis and predictive modelling techniques.
+
+Objectives
+- Analyze historical earthquake datasets.
+- Perform data cleaning and preprocessing.
+- Apply feature engineering.
+- Build Machine Learning models.
+- Evaluate model performance.
+Technologies Used
+- Python
+- Pandas and NumPy
+- Matplotlib and Seaborn
+- Scikit-learn
+- Machine Learning
+Project Workflow
+1. Data Collection – Collected historical earthquake data.
+2. Data Preprocessing – Handled missing values and prepared the dataset.
+3. EDA – Analyzed earthquake patterns and distributions.
+4. Feature Engineering – Prepared relevant features for modelling.
+5. Model Building – Developed Machine Learning models.
+6. Evaluation – Used confusion matrix, accuracy, precision and recall.
+Project Outcome
+
+Analyzed historical earthquake patterns and evaluated Machine Learning models for earthquake risk classification.
